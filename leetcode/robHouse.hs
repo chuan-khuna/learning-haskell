@@ -1,3 +1,6 @@
+-- leetcode 198. House Robber
+-- https://leetcode.com/problems/house-robber/
+
 rob :: [Int] -> Int
 rob [] = 0
 rob [x] = x
