@@ -6,7 +6,7 @@ addTwo [] [] 0 = []
 addTwo [] [] 1 = [1]
 addTwo (x : xs) [] c = addTwo (x : xs) [0] c
 addTwo [] (y : ys) c = addTwo [0] (y : ys) c
-addTwo (x : xs) (y : ys) c = reverse (((x + y + c) `mod` 10) : reverse (addTwo xs ys k))
+addTwo (x : xs) (y : ys) c = ((x + y + c) `mod` 10) : addTwo xs ys k
   where
     k = (x + y + c) `div` 10
 
@@ -17,5 +17,6 @@ addTwo (x : xs) (y : ys) c = reverse (((x + y + c) `mod` 10) : reverse (addTwo x
 -- problem input
 -- val1_in = reverse val1
 -- val2_in = reverse val2
-
 -- addTwo val1_in val2_in 0
+
+-- reverse (addTwo val1_in val2_in 0) -- reverse to readable format
