@@ -6,3 +6,11 @@ ghci
 
 - Use `:l filename.hs` or `:load` to load a hashkell file
 - Use `:r` or `:reload` to reload the file
+
+## Haskell with Jupyter
+
+https://github.com/IHaskell/IHaskell
+
+```bash
+stack exec jupyter -- notebook
+```
