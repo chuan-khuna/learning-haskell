@@ -59,11 +59,26 @@ setMisplacedState (g : gs) (q : qs) (s : ss)
     | otherwise = Wrong : setMisplacedState gs (q : qs) ss
 setMisplacedState _ _ state = state
 
+convertToReadable :: [WordleState] -> String
+convertToReadable [] = []
+convertToReadable (s : ss)
+    | s == Correct = "🟩" ++ convertToReadable ss
+    | s == Misplaced = "🟨" ++ convertToReadable ss
+    | s == Wrong = "⬜️" ++ convertToReadable ss
+
+playWordle :: String -> String -> String
+playWordle guess ans = readableState
+  where
+    state = initState (length guess)
+    correctState = setCorrectState guess ans state
+    correctQuota = setCorrectQuota guess ans (getQuota ans)
+    resultState = setMisplacedState guess correctQuota correctState
+    readableState = convertToReadable resultState
+
 guess = "cat"
 ans = "act"
 
 state = initState (length guess)
 correctState = setCorrectState guess ans state
 correctQuota = setCorrectQuota guess ans (getQuota ans)
-
 resultState = setMisplacedState guess correctQuota correctState
