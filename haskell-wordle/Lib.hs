@@ -60,3 +60,11 @@ setMisplacedState (g : gs) (q : qs) (s : ss)
     | hasQuotaLeft g (q : qs) = Misplaced : setMisplacedState gs (useQuota g (q : qs)) ss
     | otherwise = Wrong : setMisplacedState gs (q : qs) ss
 setMisplacedState _ _ state = state
+
+getResult :: String -> String -> [WordleState]
+getResult guess ans = resultState
+  where
+    state = initState (length guess)
+    correctState = setCorrectState guess ans state
+    correctQuota = setCorrectQuota guess ans (getQuota ans)
+    resultState = setMisplacedState guess correctQuota correctState
