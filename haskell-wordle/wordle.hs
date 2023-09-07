@@ -1,4 +1,5 @@
 import Data.List
+import System.Random.Stateful (IOGen)
 
 data WordleState = Wrong | Misplaced | Correct | Undefined
 
@@ -75,10 +76,20 @@ playWordle guess ans = readableState
     resultState = setMisplacedState guess correctQuota correctState
     readableState = convertToReadable resultState
 
-guess = "cat"
-ans = "act"
 
-state = initState (length guess)
-correctState = setCorrectState guess ans state
-correctQuota = setCorrectQuota guess ans (getQuota ans)
-resultState = setMisplacedState guess correctQuota correctState
+main :: IO ()
+main = do
+    putStrLn "Welcome to Wordle! (just compare guess vs answer)"
+    putStrLn "Please enter your guess:"
+    guess <- getLine
+    putStrLn "Please enter the answer:"
+    ans <- getLine
+    putStrLn (playWordle guess ans)
+
+-- guess = "cat"
+-- ans = "act"
+
+-- state = initState (length guess)
+-- correctState = setCorrectState guess ans state
+-- correctQuota = setCorrectQuota guess ans (getQuota ans)
+-- resultState = setMisplacedState guess correctQuota correctState
