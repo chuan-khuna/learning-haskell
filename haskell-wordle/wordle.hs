@@ -2,13 +2,10 @@ import ConvertEmoji
 import Lib
 import ListWords
 
-getResult :: String -> String -> String
-getResult guess ans = readableState
+getReadableResult :: String -> String -> String
+getReadableResult guess ans = readableState
   where
-    state = initState (length guess)
-    correctState = setCorrectState guess ans state
-    correctQuota = setCorrectQuota guess ans (getQuota ans)
-    resultState = setMisplacedState guess correctQuota correctState
+    resultState = getResult guess ans
     readableState = convertToReadable resultState
 
 -- get the guess input until it is valid
@@ -26,12 +23,12 @@ playWordle :: String -> IO ()
 playWordle ans = do
     let l = length ans
     guess <- getGuessInput l
-    let result = getResult guess ans
+    let result = getReadableResult guess ans
     putStrLn result
     if guess == ans
         then putStrLn "You win!"
         else do
-            putStrLn (getResult guess ans)
+            putStrLn (getReadableResult guess ans)
             playWordle ans
 
 main :: IO ()
