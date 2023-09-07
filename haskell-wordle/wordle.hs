@@ -1,5 +1,4 @@
 import Data.List
-import System.Random.Stateful (IOGen)
 
 data WordleState = Wrong | Misplaced | Correct | Undefined
 
