@@ -13,4 +13,5 @@ https://github.com/IHaskell/IHaskell
 
 ```bash
 stack exec jupyter -- notebook
+conda activate && stack exec jupyter -- lab
 ```
