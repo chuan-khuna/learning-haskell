@@ -16,7 +16,7 @@ getWarpCost (x : xs) (y : ys) = (dist + sum (getWarpCost prevInPoints prevOutPoi
     dist = distance y x
 
 solve :: [Int] -> [Int] -> [Int] -> Int
-solve inPoints outPoints states = sum costs_states + last inPoints + 1
+solve inPoints outPoints states = sum totalCosts + last inPoints + 1
   where
     costs = getWarpCost (reverse inPoints) (reverse outPoints)
-    costs_states = zipWith (*) costs (reverse states ++ [0])
+    totalCosts = zipWith (*) costs (reverse states ++ [0])
