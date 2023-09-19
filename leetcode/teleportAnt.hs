@@ -6,7 +6,7 @@ import Data.List
 distance :: Int -> Int -> Int
 distance x y = abs (x - y)
 
--- cost = in-out portal distance + (sum of costs of all portals between this in-out portals)
+-- cost = in->out portal distance + (sum of costs of all portals between this in and out portal)
 getWarpCost :: [Int] -> [Int] -> [Int]
 getWarpCost [] [] = [0]
 getWarpCost (x : xs) (y : ys) = (dist + sum (getWarpCost prevInPoints prevOutPoints)) : getWarpCost xs ys
