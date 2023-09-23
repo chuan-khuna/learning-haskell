@@ -1,10 +1,18 @@
 -- leetcode 198. House Robber
 -- https://leetcode.com/problems/house-robber/
+-- https://leetcode.com/problems/house-robber/solutions/3687484/elixir-dynamic-programing/?envType=list&envId=r2dgixhg
 
 rob :: [Int] -> Int
 rob [] = 0
 rob [x] = x
 rob nums = max (last nums + rob (init (init nums))) (rob (init nums))
+
+optimisedRob :: [Int] -> Int
+optimisedRob arr = dp arr 0 0
+  where
+    dp :: [Int] -> Int -> Int -> Int
+    dp [] near far = max near far
+    dp (cur : rest) near far = dp rest (cur + far) (max near far)
 
 main :: IO ()
 main = do
