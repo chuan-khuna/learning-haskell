@@ -18,3 +18,9 @@ countBlueStatus lights = length $ filter id $ getBlueStatus lights
 
 lights = [2, 1, 3, 5, 4]
 countBlueStatus lights
+
+countBlue' :: [Int] -> Int
+countBlue' lights = length $ filter id $ map (isBlue lights) [0 .. length lights - 1]
+  where
+    isBlue :: [Int] -> Int -> Bool
+    isBlue lights k = maximum (take (k + 1) lights) <= k + 1
