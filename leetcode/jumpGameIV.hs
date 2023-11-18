@@ -20,7 +20,7 @@ getNeighbours arr index routeMap = neighbours
 
 bfs :: [Int] -> Map.Map Int [Int] -> [(Int, [Int])] -> [Int] -> [(Int, [Int])]
 -- bfs arr routeMap queue visited -> [(distance, nodes)]
--- queue: [(next distance, next nodes)]
+-- queue: [(distance, nodes visited)]
 bfs arr routeMap queue visited
     | Set.fromList visited == Set.fromList [0 .. length arr - 1] = queue
     | otherwise = bfs arr routeMap newQueue newVisited
