@@ -18,6 +18,6 @@ solve arr k = maxCount
     sortedArr = reverse $ List.sort arr
     -- [[Int]], each [Int] is a filtered array, which is less than `target` (maximum of the array)
     -- then increase each element to target as many as possible base on `k`
-    targets = map (\filteredArr -> increseToElement filteredArr (maximum filteredArr) k) (map (\t -> filterLessThanTarget sortedArr t) sortedArr)
+    targets = map (\filteredArr -> increseToElement filteredArr (maximum filteredArr) k) (map (filterLessThanTarget sortedArr) sortedArr)
     countTargets = map (\arr -> length $ filter (== maximum arr) arr) targets
     maxCount = maximum countTargets
