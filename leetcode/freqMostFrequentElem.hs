@@ -32,7 +32,7 @@ solveOptimised arr k = solveHelper (reverse (List.sort arr)) k 0
   where
     solveHelper :: [Int] -> Int -> Int -> Int
     -- arr, k, maxCount -> maxCount
-    solveHelper [] _ maxCount = maxCount
+    solveHelper [] _ _ = 0
     solveHelper (x : xs) k maxCount = solveHelper xs k newMaxCount
       where
         targetArr = increseToElement (x : xs) x k
