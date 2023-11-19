@@ -38,5 +38,5 @@ solve [x] = 0
 solve arr = distance
   where
     routeMap = generateMap arr
-    traveralResult = bfs arr routeMap [(0, [0])] [0]
-    (distance, nodes) = head $ List.filter (\(dist, nodes) -> length arr - 1 `elem` nodes) traveralResult
+    traversalResult = bfs arr routeMap [(0, [0])] [0]
+    (distance, nodes) = head $ List.filter (\(dist, nodes) -> length arr - 1 `elem` nodes) traversalResult
