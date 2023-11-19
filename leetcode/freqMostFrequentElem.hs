@@ -18,10 +18,23 @@ solve arr k = maxCount
     sortedArr = reverse $ List.sort arr
     -- [[Int]], each [Int] is a filtered array, which is less than `target` (maximum of the array)
     -- then increase each element to target as many as possible base on `k`
-    targets = map (\filteredArr -> increseToElement filteredArr (maximum filteredArr) k) (map (filterLessThanTarget sortedArr) sortedArr)
+
+    -- targets = map (\filteredArr -> increseToElement filteredArr (maximum filteredArr) k) (map (filterLessThanTarget sortedArr) sortedArr)
 
     -- suggested via warning
-    -- targets = map ((\filteredArr -> increseToElement filteredArr (maximum filteredArr) k) . filterLessThanTarget sortedArr) sortedArr
+    targets = map ((\filteredArr -> increseToElement filteredArr (maximum filteredArr) k) . filterLessThanTarget sortedArr) sortedArr
 
     countTargets = map (\arr -> length $ filter (== maximum arr) arr) targets
     maxCount = maximum countTargets
+
+solveOptimised :: [Int] -> Int -> Int
+solveOptimised arr k = solveHelper (reverse (List.sort arr)) k 0
+  where
+    solveHelper :: [Int] -> Int -> Int -> Int
+    -- arr, k, maxCount -> maxCount
+    solveHelper [] _ maxCount = maxCount
+    solveHelper (x : xs) k maxCount = solveHelper xs k newMaxCount
+      where
+        targetArr = increseToElement (x : xs) x k
+        count = length $ filter (== x) targetArr
+        newMaxCount = max maxCount count
