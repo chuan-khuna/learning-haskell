@@ -10,6 +10,7 @@ medianSearch shortArr longArr leftIdx rightIdx
     totalLength = length shortArr + length longArr
     half = totalLength `div` 2
 
+    -- binary search based on short array
     -- middleIdx of short array
     middleIdx = (leftIdx + rightIdx) `div` 2
     -- middleIdx of long array
