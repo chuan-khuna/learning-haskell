@@ -8,11 +8,15 @@ replaceNegative (x : xs)
 
 -- optimise this to hash on itself?
 hashArr :: [Int] -> [Int] -> [Int]
+-- arr, indexArr(= arr) -> return hashedArr
 hashArr arr [] = arr
 hashArr arr (x : xs) = hashArr (hashAtIndex arr x) xs
   where
     hashAtIndex :: [Int] -> Int -> [Int]
     -- arr, index -> return hashedArr
+    -- replace arr[index] w/ negative value to encode information
+    -- where index is the (value - 1)
+    -- eg value 2 -> set arr[1] to negative value
     hashAtIndex arr index
         -- index out of range = do nothing
         | index < 0 || index > (length arr - 1) = arr
@@ -34,5 +38,3 @@ solve arr = findMissingInt hashedArr [1 .. length arr]
     findMissingInt hashedArr (i : is)
         | hashedArr !! (i - 1) >= 0 = i
         | otherwise = findMissingInt hashedArr is
-
-
