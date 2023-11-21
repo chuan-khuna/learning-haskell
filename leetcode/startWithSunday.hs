@@ -40,4 +40,5 @@ zipYearMonth years months = [(year, month) | year <- years, month <- months]
 
 startDays = [((year, month), idToDay (getStartDayInMonth year month)) | (year, month) <- zipYearMonth years months]
 
+-- list of (year, month) that starts with Sunday
 startWithSunday = [(x, y) | (x, y) <- startDays, y == "Sun"]

@@ -5,7 +5,7 @@
 isBlue :: [Int] -> Int -> Bool
 -- isBlue lights k
 -- at the kth turn, are all lights blue?
--- k: 0-indexed id that turn on the light [k]
+-- k: 0-indexed id that turn on the lights[k]
 isBlue lights k = maximum (take (k + 1) lights) <= k + 1
 
 getBlueStatus :: [Int] -> [Bool]

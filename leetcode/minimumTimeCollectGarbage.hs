@@ -17,3 +17,7 @@ collectTime garbage travel garbageType = collectTime' (reverse garbage) (reverse
 garbage = ["MMM", "PGM", "GP"]
 travel = [3, 10]
 sum (map (collectTime garbage travel) "GPM")
+
+
+-- but what is Eta reduce?
+-- collectTime garbage travel = collectTime' (reverse garbage) (reverse travel)

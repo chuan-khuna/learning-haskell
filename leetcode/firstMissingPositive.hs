@@ -7,7 +7,6 @@ replaceNegative (x : xs)
     | otherwise = x : replaceNegative xs
 
 -- optimise this to hash on itself?
--- handling when index is negative/out of range
 hashArr :: [Int] -> [Int] -> [Int]
 -- arr, indexArr(= arr) -> return hashedArr
 hashArr arr [] = arr
@@ -15,7 +14,7 @@ hashArr arr (x : xs) = hashArr (hashAtIndex arr x) xs
   where
     hashAtIndex :: [Int] -> Int -> [Int]
     -- arr, index -> return hashedArr
-    -- replace arr[index] w/ negative value to encode information
+    -- replace arr[index] with negative value to encode information
     -- where `index` is (value - 1)
     -- eg value 2 -> set arr[1] to negative value
     hashAtIndex arr index
