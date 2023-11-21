@@ -14,7 +14,7 @@ reductionOperationCount :: [Int] -> Int
 reductionOperationCount arr = numOperation
   where
     cumulativeOpt :: [Int] -> [Int]
-    -- cumulative operation at index i is the sum of all elements from index 0 to i
+    -- cumulative operation needed at index `i` is the sum of all elements from index 0 to `i`
     cumulativeOpt [] = []
     cumulativeOpt (x : xs) = x : Prelude.map (+ x) (cumulativeOpt xs)
 
